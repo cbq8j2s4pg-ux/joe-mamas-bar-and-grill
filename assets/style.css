@@ -146,6 +146,34 @@ nav .order-btn:hover {
   margin-right: auto;
 }
 
+/* ===== REVIEWS TICKER ===== */
+.reviews-ticker {
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto 30px;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.reviews-track {
+  display: flex;
+  gap: 60px;
+  white-space: nowrap;
+  animation: scroll-reviews 20s linear infinite;
+}
+
+.review-item {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: var(--cream);
+  font-style: italic;
+}
+
+@keyframes scroll-reviews {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
 .btn {
@@ -211,6 +239,7 @@ nav .order-btn:hover {
   margin-bottom: 10px;
 }
 .section--dark .section-title { color: var(--gold); }
+.section--about .section-title { color: var(--gold); }
 
 .section-subtitle {
   text-align: center;
@@ -228,6 +257,12 @@ nav .order-btn:hover {
   border-radius: 2px;
 }
 
+/* ===== WHAT WE'RE ALL ABOUT SECTION ===== */
+.section--about {
+  background: linear-gradient(rgba(30,42,58,0.55), rgba(30,42,58,0.55)), url('images/sunset.jpg') center/cover no-repeat;
+  color: var(--cream);
+}
+
 /* ===== HOMEPAGE CARDS ===== */
 .feature-grid {
   display: grid;
@@ -238,15 +273,36 @@ nav .order-btn:hover {
 }
 
 .feature-card {
-  background: var(--white);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+.feature-card--video:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+.feature-card--video {
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature-video {
+  width: 100%;
+  display: none;
+  border-radius: 12px;
+}
+.feature-card--video.playing .feature-video {
+  display: block;
+}
+.feature-card--video.playing .feature-card-body {
+  display: none;
+}
+.feature-card--video .feature-card-body {
+  position: relative;
+  z-index: 2;
 }
 .feature-card-body {
   padding: 24px;
@@ -254,10 +310,10 @@ nav .order-btn:hover {
 .feature-card h3 {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.4rem;
-  color: var(--navy);
+  color: var(--gold);
   margin-bottom: 10px;
 }
-.feature-card p { color: var(--text-light); }
+.feature-card p { color: var(--cream); }
 .feature-card .card-icon {
   font-size: 2.5rem;
   margin-bottom: 12px;
